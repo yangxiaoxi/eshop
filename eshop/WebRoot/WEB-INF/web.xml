@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>eshop</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  
+  <!-- 配置登陆servlet -->
+  <servlet-name>userServlet</servlet-name>
+  <servlet-class>cn.yunhe.servlet.UserServlet</servlet-class>
+  
+  </servlet>
+  
+  <!-- 配置登陆servlet映射的url -->
+  <servlet-mapping>
+  
+  <servlet-name>userServlet</servlet-name>
+  <url-pattern>/userServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 是否登陆的过滤器 -->
+  <filter>
+     <filter-name>IsLoginFilter</filter-name>
+     <filter-class>cn.yunhe.util.IsLoginFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+      <filter-name>IsLoginFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 页面浏览量监听器 -->
+  <listener>
+  <listener-class>cn.yunhe.util.PageViewListener</listener-class>
+  </listener>
+ <!-- ip监听 -->
+  <listener>
+  <listener-class>cn.yunhe.util.Iplistener</listener-class>
+  </listener>
+  
+</web-app>
